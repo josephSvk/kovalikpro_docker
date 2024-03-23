@@ -28,9 +28,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.x' # Toto automaticky vyberie najnovšiu verziu Python 3
+
+      - name: Install dependencies
+        run: |
+              python -m pip install --upgrade pip
+              pip install pre-commit
+
       - name: Run pre-commit
-        uses: pre-commit/action@v3.0.0
+        run: pre-commit run --all-files        
 
   # With no caching at all the entire ci process takes 3m to complete!
   pytest:
@@ -42,7 +48,7 @@ jobs:
 
       - name: Build the Stack
         run: docker compose -f local.yml build django
-              
+
       - name: Run DB Migrations
         run: docker compose -f local.yml run --rm django python manage.py migrate
 
