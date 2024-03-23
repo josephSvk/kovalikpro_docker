@@ -279,4 +279,3 @@ kovalikpro/media/
 .envs/*
 !.envs/.local/
 .certs/
-
