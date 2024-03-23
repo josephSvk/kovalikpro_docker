@@ -45,5 +45,4 @@ services:
       - ./certs:/etc/nginx/certs
     restart: always
     depends_on:
-      - django  
-  
+      - django
