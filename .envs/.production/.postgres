@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=kovalikpro
+POSTGRES_USER=NFUlzgTASqmuFKwqyClgdmPuQvtdashA
+POSTGRES_PASSWORD=y0KQQqVRYobrEwYvtZub3Db2AbZ5YPFIxdhuLm8Ei9PZBN2mSHNxtrB6bU3c4Lo0
