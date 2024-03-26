@@ -281,5 +281,5 @@ kovalikpro/media/
 .certs/
 
 ## moje upravy
-config/settings/base.py
-config/settings/local.py
+.base.py
+.local.py

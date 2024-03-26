@@ -10,3 +10,4 @@ VIRTUAL_PORT=8000
 
 # Email
 # ------------------------------------------------------------------------------
+DJANGO_EMAIL_HOST_PASSWORD=rtth sxzy eqam mfon

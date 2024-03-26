@@ -14,6 +14,7 @@ DJANGO_SECURE_SSL_REDIRECT=False
 # Email
 # ------------------------------------------------------------------------------
 DJANGO_SERVER_EMAIL=kovalikpro@gmail.com
+EMAIL_HOST_PASSWORD="rtth sxzy eqam mfon"
 
 
 # django-allauth

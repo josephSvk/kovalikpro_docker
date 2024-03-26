@@ -44,7 +44,7 @@ class Command(BaseCommand):
                 self.stdout.write(
                     self.style.SUCCESS("Successfully sent the quote email."),
                 )
-            except Exception(ValueError, KeyError) as e:
+            except (ValueError, KeyError) as e:
                 self.stdout.write(self.style.ERROR(f"Error sendmail: {e}"))
         else:
             logger.error("The quote is empty. Email will not be sent.")
