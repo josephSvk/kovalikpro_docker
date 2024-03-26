@@ -1,0 +1,7 @@
+#utils knihovna
+random-word
+quote
+deep-translator
+googletrans
+quoters
+openai
