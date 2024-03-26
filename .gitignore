@@ -279,7 +279,3 @@ kovalikpro/media/
 .envs/*
 !.envs/.local/
 .certs/
-
-## moje upravy
-config/settings/base.py
-config/settings/local.py

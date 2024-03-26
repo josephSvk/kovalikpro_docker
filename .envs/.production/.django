@@ -13,7 +13,7 @@ DJANGO_SECURE_SSL_REDIRECT=False
 
 # Email
 # ------------------------------------------------------------------------------
-DJANGO_SERVER_EMAIL=kovalikpro@gmail.com
+DJANGO_SERVER_EMAIL=
 
 
 # django-allauth
