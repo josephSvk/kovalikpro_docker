@@ -19,6 +19,6 @@ def generate_random_quote_v1(language):
                 target=language,
             ).translate(quote_text)
             if translated_quote:
-                return f"{author}\n\n{translated_quote+"v1"}"
+                return f"{author}\n\n{translated_quote}"
     except (ValueError, KeyError):
         return "No quotes found for the given word. Please try another word."

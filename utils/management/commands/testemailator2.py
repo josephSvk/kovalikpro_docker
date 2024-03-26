@@ -6,6 +6,7 @@ from django.core.management.base import BaseCommand
 
 from utils.services.generate_random_quote_v1 import generate_random_quote_v1
 from utils.services.generate_random_quote_v4 import generate_random_quote_v4
+from utils.services.generate_random_quote_v5 import generate_random_quote_v5
 
 logger = logging.getLogger("utils.management.commands.emailator2")
 
@@ -23,7 +24,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         language = options["lang"]
-        quote_functions = [generate_random_quote_v1] * 3 + [generate_random_quote_v4]
+        quote_functions = (
+            [generate_random_quote_v1] * 2
+            + [generate_random_quote_v4]
+            + [generate_random_quote_v5]
+        )
         for generate_quote in quote_functions:
             quote = generate_quote(language)
             try:
