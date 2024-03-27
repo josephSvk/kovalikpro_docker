@@ -79,4 +79,17 @@ COPY . ${APP_HOME}
 # Pridanie cron
 RUN apt-get update && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
 
+FROM certbot/certbot
+
+
+# Pred kopírovaním skontrolujte, či súbor existuje
+RUN ls -la kovalikpro_docker/.certs/
+# Zobrazí obsah adresára a pomôže overiť prítomnosť súboru
+# Kopírujte skripty na obnovu a požiadavku, ak ich máte
+COPY request_cert.sh /etc/letsencrypt/
+COPY renew_cert.sh /etc/letsencrypt/
+
+# Spustite obnovovací proces (ako príklad, konfigurujte podľa potreby)
+CMD ["/etc/letsencrypt/renew_cert.sh"]
+
 ENTRYPOINT ["/entrypoint"]

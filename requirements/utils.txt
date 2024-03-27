@@ -5,3 +5,4 @@ deep-translator
 googletrans
 openai
 django-crontab
+certbot

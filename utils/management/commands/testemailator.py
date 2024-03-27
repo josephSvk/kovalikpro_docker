@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
+
 from kovalikpro_docker.utils.services.generate_random_quote_v1 import (
     generate_random_quote_v4,
 )

@@ -278,6 +278,9 @@ kovalikpro/media/
 .env
 .envs/*
 !.envs/.local/
-.certs/
+
 
 ## moje upravy
+.certs/
+certs/*.crt
+certs/*.key

@@ -47,3 +47,11 @@ ci:
   autoupdate_schedule: weekly
   skip: []
   submodules: false
+
+exclude: '.*\.cert$'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: trailing-whitespace
+

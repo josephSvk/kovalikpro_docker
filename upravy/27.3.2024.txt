@@ -1,37 +1,29 @@
-Samozrejme, tu je zhrnutie opráv a krokov, ktoré sme vykonali:
+Pridanie Funkcionality Tlačidla pre Odber Citátov v Django s Cookiecutterom:
 
-1. **Pridanie `cron` do Dockerfile:**
-   Aby `django-crontab` mohol správne fungovať v Docker kontajneri, bolo potrebné pridať `cron` do obrazu Django kontajnera. To sme dosiahli pridaním príkazov na inštaláciu `cron` do `Dockerfile` pre Django službu.
+Diskutovali sme o tom, ako pridať tlačidlo pre odber citátov do vašej Django aplikácie využívajúcej Cookiecutter.
+Navrhli sme vytvorenie URL endpointu a Django view funkcie na spracovanie odberu citátov.
+Riešenie Problému s Dockerom a PostgreSQL:
 
-   ```Dockerfile
-   RUN apt-get update && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
-   ```
+Riešili sme problém s Dockerom, kde kontajner Django aplikácie nevedel správne nadviazať spojenie s PostgreSQL databázou.
+Pridanie cron do Dockerfile pre Django Kontajner:
 
-2. **Aktualizácia `django-crontab`:**
-   Zistili sme, že `django-crontab` nie je nainštalovaný alebo je nesprávne nakonfigurovaný, čo spôsobovalo chybu `ModuleNotFoundError`. Opravili sme to inštaláciou `django-crontab` cez `pip` a pridaním `django_crontab` do `INSTALLED_APPS` v `settings.py`.
+Vysvetlili sme potrebu pridania cron do Dockerfile pre účely plánovania úloh s django-crontab.
+Inštalácia a Konfigurácia django-crontab:
 
-   ```bash
-   pip install django-crontab
-   ```
+Diskutovali sme o inštalácii django-crontab a jeho pridaní do INSTALLED_APPS v settings.py.
+Ukázali sme, ako pridať, zobraziť a odstrániť CRON úlohy pomocou django-crontab.
+Oprava SyntaxError v send_quote_emails.py:
 
-   ```python
-   INSTALLED_APPS = [
-       ...
-       'django_crontab',
-       ...
-   ]
-   ```
+Identifikovali a opravili sme syntax chybu v súbore send_quote_emails.py.
+Opravy a Úpravy kódu pre Pre-commit a Ruff:
 
-3. **Nastavenie CRON Jobs v Django:**
-   Vysvetlili sme, ako nastaviť CRON úlohy pomocou `django-crontab` pridávaním príkazov do Django `settings.py` a ako použiť príkazy `crontab add`, `crontab show` a `crontab remove` na správu týchto úloh.
+Riešili sme problémy zistené nástrojmi pre-commit a Ruff, vrátane opravy f-string syntaxe a optimalizácie logovacích výrazov.
+Riešenie Problému s ModuleNotFoundError pre django-crontab:
 
-4. **Oprava SyntaxError v `send_quote_emails.py`:**
-   Identifikovali sme a opravili syntax chybu v `send_quote_emails.py`, ktorá spôsobovala `SyntaxError: unterminated f-string literal`. Chyba bola spôsobená neukončeným f-stringom.
+Vyriešili sme problém, kde Django nemohlo nájsť modul django-crontab kvôli tomu, že nebol správne nainštalovaný alebo bol problém s Docker konfiguráciou.
+Manuálne Testovanie a Overovanie Funkčnosti:
 
-5. **Overenie a Testovanie:**
-   Navrhli sme metódy na manuálne testovanie funkčnosti `django-crontab` a Django management príkazov spustením príkazu `python manage.py send_quote` cez `docker-compose` a monitorovaním logov pre potvrdenie správnej funkčnosti.
+Navrhli sme spôsoby, ako manuálne testovať a overiť funkčnosť django-crontab a vašich Django management príkazov.
+Riešenie Problémov s Docker Compose a crontab:
 
-6. **Alternatívy a Návrhy na Zlepšenie:**
-   Diskutovali sme o alternatívach k `django-crontab`, ako je použitie Celery s Beat schedulerom pre komplexnejšie úlohy na pozadí a periodické úlohy v Django aplikáciách.
-
-Tieto kroky a opravy zabezpečili, že vaša Django aplikácia môže správne používať `django-crontab` pre plánovanie a spúšťanie periodických úloh vo vašom Dockerizovanom prostredí. Doporučujem ich pridať do README alebo dokumentácie projektu na GitHub, aby boli tieto informácie ľahko dostupné pre vás alebo iných vývojárov pracujúcich na projekte.
+Diskutovali sme o probléme s crontab v Docker kontajneri a jeho absencii v základnom obrazu.
