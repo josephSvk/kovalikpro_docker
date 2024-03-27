@@ -11,7 +11,7 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["kovalik.pro"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["kovalik.pro","localhost", "127.0.0.1"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
     "DJANGO_EMAIL_SUBJECT_PREFIX",
-    default="[kovalikpro2232024docker] ",
+    default="[kovalikpro] ",
 )
 
 # ADMIN
@@ -152,3 +152,4 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#internal-ips

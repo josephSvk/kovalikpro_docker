@@ -79,7 +79,13 @@ RUN DATABASE_URL="" \
   DJANGO_SETTINGS_MODULE="config.settings.test" \
   python manage.py compilemessages
 
+USER root
+
 # Pridanie cron
-RUN apt-get update && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y cron && \
+    rm -rf /var/lib/apt/lists/*
+
+USER django
 
 ENTRYPOINT ["/entrypoint"]
