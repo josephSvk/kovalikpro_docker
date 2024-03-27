@@ -25,8 +25,13 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         language = options["lang"]
         quote_functions = (
-            [generate_random_quote_v1] * 2
-            + [generate_random_quote_v4]
+            [
+                generate_random_quote_v1,
+            ]
+            * 2
+            + [
+                generate_random_quote_v4,
+            ]
             + [generate_random_quote_v5]
         )
         for generate_quote in quote_functions:

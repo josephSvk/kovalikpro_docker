@@ -1,9 +1,12 @@
 from typing import ClassVar
 
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.db.models import CharField
 from django.db.models import EmailField
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from .managers import UserManager
@@ -36,3 +39,19 @@ class User(AbstractUser):
 
         """
         return reverse("users:detail", kwargs={"pk": self.id})
+
+
+class QuoteSubscription(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="quote_subscriptions",
+    )
+    subscribed = models.BooleanField(default=True)
+    date_subscribed = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return (
+            f"{self.user.username} subscription status: "
+            f"{'Subscribed' if self.subscribed else 'Unsubscribed'}"
+        )

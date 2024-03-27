@@ -5,9 +5,6 @@ from pathlib import Path
 
 import environ
 
-env = environ.Env()
-environ.Env.read_env()
-
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # kovalikpro/
 APPS_DIR = BASE_DIR / "kovalikpro"
@@ -88,7 +85,6 @@ LOCAL_APPS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-INSTALLED_APPS += ["utils"]
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
@@ -289,3 +285,11 @@ SOCIALACCOUNT_FORMS = {"signup": "kovalikpro.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+INSTALLED_APPS += [
+    # My Apps
+    "django_crontab",
+    "utils",
+]
+CRONJOBS = [
+    ("0 * * * *", "django.core.management.call_command", ["send_quote"]),
+]

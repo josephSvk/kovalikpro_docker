@@ -1,0 +1,37 @@
+Samozrejme, tu je zhrnutie opráv a krokov, ktoré sme vykonali:
+
+1. **Pridanie `cron` do Dockerfile:**
+   Aby `django-crontab` mohol správne fungovať v Docker kontajneri, bolo potrebné pridať `cron` do obrazu Django kontajnera. To sme dosiahli pridaním príkazov na inštaláciu `cron` do `Dockerfile` pre Django službu.
+
+   ```Dockerfile
+   RUN apt-get update && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
+   ```
+
+2. **Aktualizácia `django-crontab`:**
+   Zistili sme, že `django-crontab` nie je nainštalovaný alebo je nesprávne nakonfigurovaný, čo spôsobovalo chybu `ModuleNotFoundError`. Opravili sme to inštaláciou `django-crontab` cez `pip` a pridaním `django_crontab` do `INSTALLED_APPS` v `settings.py`.
+
+   ```bash
+   pip install django-crontab
+   ```
+
+   ```python
+   INSTALLED_APPS = [
+       ...
+       'django_crontab',
+       ...
+   ]
+   ```
+
+3. **Nastavenie CRON Jobs v Django:**
+   Vysvetlili sme, ako nastaviť CRON úlohy pomocou `django-crontab` pridávaním príkazov do Django `settings.py` a ako použiť príkazy `crontab add`, `crontab show` a `crontab remove` na správu týchto úloh.
+
+4. **Oprava SyntaxError v `send_quote_emails.py`:**
+   Identifikovali sme a opravili syntax chybu v `send_quote_emails.py`, ktorá spôsobovala `SyntaxError: unterminated f-string literal`. Chyba bola spôsobená neukončeným f-stringom.
+
+5. **Overenie a Testovanie:**
+   Navrhli sme metódy na manuálne testovanie funkčnosti `django-crontab` a Django management príkazov spustením príkazu `python manage.py send_quote` cez `docker-compose` a monitorovaním logov pre potvrdenie správnej funkčnosti.
+
+6. **Alternatívy a Návrhy na Zlepšenie:**
+   Diskutovali sme o alternatívach k `django-crontab`, ako je použitie Celery s Beat schedulerom pre komplexnejšie úlohy na pozadí a periodické úlohy v Django aplikáciách.
+
+Tieto kroky a opravy zabezpečili, že vaša Django aplikácia môže správne používať `django-crontab` pre plánovanie a spúšťanie periodických úloh vo vašom Dockerizovanom prostredí. Doporučujem ich pridať do README alebo dokumentácie projektu na GitHub, aby boli tieto informácie ľahko dostupné pre vás alebo iných vývojárov pracujúcich na projekte.

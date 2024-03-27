@@ -3,5 +3,5 @@ random-word
 quote
 deep-translator
 googletrans
-quoters
 openai
+django-crontab
